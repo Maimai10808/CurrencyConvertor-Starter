@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04F88EE02E3D4F080024C13B /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F88EDF2E3D4F080024C13B /* ContentViewModel.swift */; };
 		2020EB272B93B5A000C60D05 /* CurrencyChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2020EB262B93B5A000C60D05 /* CurrencyChoice.swift */; };
 		2066DA052B93522F00AF726C /* CurrencyConvertorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2066DA042B93522F00AF726C /* CurrencyConvertorApp.swift */; };
 		2066DA072B93522F00AF726C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2066DA062B93522F00AF726C /* ContentView.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04F88EDF2E3D4F080024C13B /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		2020EB262B93B5A000C60D05 /* CurrencyChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChoice.swift; sourceTree = "<group>"; };
 		2066DA012B93522F00AF726C /* CurrencyConvertor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConvertor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2066DA042B93522F00AF726C /* CurrencyConvertorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertorApp.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				2020EB262B93B5A000C60D05 /* CurrencyChoice.swift */,
 				2066DA082B93523100AF726C /* Assets.xcassets */,
 				2066DA0A2B93523100AF726C /* Preview Content */,
+				04F88EDF2E3D4F080024C13B /* ContentViewModel.swift */,
 			);
 			path = CurrencyConvertor;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F88EE02E3D4F080024C13B /* ContentViewModel.swift in Sources */,
 				2066DA072B93522F00AF726C /* ContentView.swift in Sources */,
 				2066DA052B93522F00AF726C /* CurrencyConvertorApp.swift in Sources */,
 				2020EB272B93B5A000C60D05 /* CurrencyChoice.swift in Sources */,
