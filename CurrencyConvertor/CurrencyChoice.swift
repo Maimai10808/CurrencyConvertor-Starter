@@ -136,7 +136,6 @@ enum CurrencyChoice: String, CaseIterable, Identifiable {
          Swiss = "CHF",
          Swedish = "SEK",
          SyrianPound = "SYP",
-         Taiwan = "TWD",
          Tajikistani = "TJS",
          Tanzanian = "TZS",
          Thai = "THB",
@@ -186,7 +185,6 @@ enum CurrencyChoice: String, CaseIterable, Identifiable {
         case .Norwegian:            return Image("Norwegian")
         case .Danish:               return Image("Danish")
         case .Polish:               return Image("Polish")
-        case .Taiwan:               return Image("Taiwan")
         case .Thai:                 return Image("Thai")
         case .Malaysia:             return Image("Malaysia")
         case .Israel:               return Image("Israel")
@@ -433,7 +431,6 @@ enum CurrencyChoice: String, CaseIterable, Identifiable {
         case .Swiss:                return "🇨🇭 Swiss Franc"
         case .Swedish:              return "🇸🇪 Swedish Krona"
         case .SyrianPound:          return "🇸🇾 Syrian Pound"
-        case .Taiwan:               return "🇹🇼 Taiwan Dollar"
         case .Tajikistani:          return "🇹🇯 Tajikistan Somoni"
         case .Tanzanian:            return "🇹🇿 Tanzanian Shilling"
         case .Thai:                 return "🇹🇭 Thai Baht"
