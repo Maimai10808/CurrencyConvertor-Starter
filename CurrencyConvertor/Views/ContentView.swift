@@ -36,8 +36,10 @@ struct ContentView: View {
                 Text("Amount")
                     .font(.system(size: 15))
                 
-                TextField("", value    : $viewModel.$baseAmount,
-                          formatter: viewModel.numberFormatter)
+                
+                
+                
+                TextField("", value: $viewModel.baseAmount, formatter: viewModel.numberFormatter)
                 .font(.system(size: 18, weight: .semibold))
                 .padding()
                 .overlay {
@@ -95,8 +97,7 @@ struct ContentView: View {
                 Text("Converted To")
                     .font(.system(size: 15))
                 
-                TextField("", value    : $viewModel.$convertedAmount,
-                          formatter: viewModel.numberFormatter)
+                TextField("", value: $viewModel.convertedAmount, formatter: viewModel.numberFormatter)
                 .font(.system(size: 18, weight: .semibold))
                 .padding()
                 .overlay {
@@ -167,6 +168,9 @@ struct ContentView: View {
                 }
             }
             
+        }
+        .onTapGesture {
+            viewModel.convert()
         }
     }
 }

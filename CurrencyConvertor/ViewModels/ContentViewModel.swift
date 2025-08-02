@@ -7,13 +7,15 @@
 
 import Foundation
 
+// conversionrate / basexchangerate * baseAmount = conversion
 
+@MainActor
 class ContentViewModel: ObservableObject {
     
-    @Published var baseAmount = ""
-    @Published var convertedAmount = ""
+    @Published var baseAmount = 1.0
+    @Published var convertedAmount = 1.0
     @Published var baseCurrency: CurrencyChoice = .Usa
-    @Published var convertedCurrency: CurrencyChoice = .Euro
+    @Published var convertedCurrency: CurrencyChoice = .Usa
     @Published var rates: Rates?
     @Published var isLoading = false
     @Published var errorMessage = ""
@@ -50,5 +52,14 @@ class ContentViewModel: ObservableObject {
         isLoading = false
     }
     
+    func convert() {
+        if let rates = rates,
+           let baseExchangeRate = rates.rates[baseCurrency.rawValue],
+           let convertedExchangeRate = rates.rates[convertedCurrency.rawValue] {
+            
+            convertedAmount = (convertedExchangeRate / baseExchangeRate) * baseAmount
+            
+        }
+    }
     
 }
