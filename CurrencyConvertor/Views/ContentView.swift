@@ -11,11 +11,32 @@ struct ContentView: View {
     @StateObject private var viewModel = ContentViewModel()
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Amount")
-                .font(.system(size: 15))
-            
-            TextField("", value    : $viewModel.$baseAmount,
+        ZStack {
+            VStack(alignment: .leading) {
+                
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                        Text(viewModel.errorMessage)
+                            .foregroundStyle(.red)
+                            .font(.system(size: 18, weight: .semibold))
+                    
+                        Text(viewModel.successMessage)
+                            .foregroundStyle(.green)
+                            .font(.system(size: 18, weight: .semibold))
+
+                    Spacer()
+                }
+                
+                
+                Spacer()
+                
+                Text("Amount")
+                    .font(.system(size: 15))
+                
+                TextField("", value    : $viewModel.$baseAmount,
                           formatter: viewModel.numberFormatter)
                 .font(.system(size: 18, weight: .semibold))
                 .padding()
@@ -56,25 +77,25 @@ struct ContentView: View {
                     }
                     .padding(.trailing)
                 }
-            
-            HStack {
                 
-                Spacer()
-                
-                Image(systemName: "arrow.up.arrow.down")
-                    .font(.system(size: 20, weight: .bold))
-                    .padding(.vertical)
-                
-                Spacer()
-                
+                HStack {
+                    
+                    Spacer()
+                    
+                    Image(systemName: "arrow.up.arrow.down")
+                        .font(.system(size: 20, weight: .bold))
+                        .padding(.vertical)
+                    
+                    Spacer()
+                    
                 }
-            
-            
-            
-            Text("Converted To")
-                .font(.system(size: 15))
-            
-            TextField("", value    : $viewModel.$convertedAmount,
+                
+                
+                
+                Text("Converted To")
+                    .font(.system(size: 15))
+                
+                TextField("", value    : $viewModel.$convertedAmount,
                           formatter: viewModel.numberFormatter)
                 .font(.system(size: 18, weight: .semibold))
                 .padding()
@@ -115,23 +136,37 @@ struct ContentView: View {
                     }
                     .padding(.trailing)
                 }
-            
-            HStack {
+                
+                HStack {
+                    Spacer()
+                    
+                    Text("1.0000 USD = 2.000000 EUR")
+                        .font(.system(size: 18, weight: .semibold))
+                        .padding(.top, 25)
+                    
+                    Spacer()
+                    
+                }
+                
                 Spacer()
                 
-                Text("1.0000 USD = 2.000000 EUR")
-                    .font(.system(size: 18, weight: .semibold))
-                    .padding(.top, 25)
-                
-                Spacer()
                 
             }
+            .padding(.horizontal)
+            .task {
+                await viewModel.fetchRates()
+            }
             
+            if viewModel.isLoading {
+                ZStack {
+                    Color.black.opacity(0.3)
+                        .ignoresSafeArea()
+                    
+                    ProgressView()
+                        .tint(.white)
+                }
+            }
             
-        }
-        .padding(.horizontal)
-        .task {
-            await viewModel.fetchRates()
         }
     }
 }
