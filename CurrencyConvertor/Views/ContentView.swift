@@ -9,6 +9,8 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject private var viewModel = ContentViewModel()
+    @FocusState  private var baseAmountIsFocused: Bool
+    @FocusState  private var convertedAmountIsFocused: Bool
     
     var body: some View {
         ZStack {
@@ -40,6 +42,12 @@ struct ContentView: View {
                 
                 
                 TextField("", value: $viewModel.baseAmount, formatter: viewModel.numberFormatter)
+                    .focused($baseAmountIsFocused)
+                    .onSubmit {
+                        viewModel.convert()
+                        baseAmountIsFocused      = false
+                        convertedAmountIsFocused = false
+                    }
                 .font(.system(size: 18, weight: .semibold))
                 .padding()
                 .overlay {
@@ -98,6 +106,7 @@ struct ContentView: View {
                     .font(.system(size: 15))
                 
                 TextField("", value: $viewModel.convertedAmount, formatter: viewModel.numberFormatter)
+                    .focused($convertedAmountIsFocused)
                 .font(.system(size: 18, weight: .semibold))
                 .padding()
                 .overlay {
@@ -171,6 +180,9 @@ struct ContentView: View {
         }
         .onTapGesture {
             viewModel.convert()
+            
+            baseAmountIsFocused      = false
+            convertedAmountIsFocused = false
         }
     }
 }
