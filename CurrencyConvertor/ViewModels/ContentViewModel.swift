@@ -28,6 +28,17 @@ class ContentViewModel: ObservableObject {
         return numberFormatter
     }
     
+    var conversionRate: Double {
+        if let rates = rates,
+           let baseExchangeRate = rates.rates[baseCurrency.rawValue],
+           let convertedExchangeRate = rates.rates[convertedCurrency.rawValue] {
+            
+            return convertedExchangeRate / baseExchangeRate
+        }
+        
+        return 1
+    }
+    
     func fetchRates() async {
 
         guard let url = URL(string: "https://openexchangerates.org/api/latest.json?app_id=fc77f240909648d7aff7fe88203ec0d5") else {
@@ -63,3 +74,15 @@ class ContentViewModel: ObservableObject {
     }
     
 }
+
+
+// DispatchQueue.main.async { ... }
+// UIKit时代通用写法，手动跳回主线程
+
+
+s
+
+// @MainActor
+// Swift 并发时代推荐方式，自动让所有 UI 相关更新回到主线程
+
+

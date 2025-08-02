@@ -68,6 +68,7 @@ struct ContentView: View {
                             ForEach(CurrencyChoice.allCases) { currencyChoice in
                                 Button(action: {
                                     viewModel.baseCurrency = currencyChoice
+                                    viewModel.convert()
                                 }, label: {
                                     Text(currencyChoice.fetchMenuName())
                                 })
@@ -127,6 +128,7 @@ struct ContentView: View {
                             ForEach(CurrencyChoice.allCases) { currencyChoice in
                                 Button(action: {
                                     viewModel.convertedCurrency = currencyChoice
+                                    viewModel.convert()
                                 }, label: {
                                     Text(currencyChoice.fetchMenuName())
                                 })
@@ -150,7 +152,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     
-                    Text("1.0000 USD = 2.000000 EUR")
+                    Text("1.0000 \(viewModel.baseCurrency.rawValue) = \(viewModel.conversionRate) \(viewModel.convertedCurrency.rawValue)")
                         .font(.system(size: 18, weight: .semibold))
                         .padding(.top, 25)
                     
